@@ -8,7 +8,7 @@ function plotfirst(){
              .append("svg")
              .attr({
            	    "width" : width + margin.right + margin.left,
-               	"height" : height + margin.top + margin.bottom 
+               	"height" : height + margin.top + margin.bottom
                  })
              .append("g")
             .attr("transform","translate(" + margin.left + ',' + margin.top +')');
@@ -16,10 +16,10 @@ function plotfirst(){
 //defining x nd y scales
 
   var xScale=d3.scale.ordinal()
-                     .rangeRoundBands([0,width],0.3,0.2) ; 
+                     .rangeRoundBands([0,width],0.3,0.2) ;
 
   var yScale=d3.scale.linear()
-               .range([height,0]); 
+               .range([height,0]);
 
 //defining axis
 
@@ -33,15 +33,15 @@ var yAxis=d3.svg.axis()
 
 
 
-d3.json("../../includes/json/literatepersons.json",function(error,data){
+d3.json("../json/literatepersons.json",function(error,data){
     if(error) console.log("Error: data not found");
  data.forEach(function(d){
 d["Literate - Persons"]=+d["Literate - Persons"];
 d["Age-group"]=d["Age-group"];
 // console.log(d["Literate - Persons"]);
- });   
+ });
 //  data.sort(function(a,b){
-// return b["Literate - Persons"] - a["Literate - Persons"]; 
+// return b["Literate - Persons"] - a["Literate - Persons"];
 //  });
 
  // donmains of x and y scale
@@ -51,7 +51,7 @@ d["Age-group"]=d["Age-group"];
 
 
  //draw the bars
- svg.selectAll("rect")    
+ svg.selectAll("rect")
     .data(data)
     .enter()
     .append("rect")
@@ -94,5 +94,5 @@ d["Age-group"]=d["Age-group"];
     .call(yAxis)
     .style("font-sixe","12px");
 
-  });        
+  });
 }
